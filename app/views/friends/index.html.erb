@@ -1,0 +1,7 @@
+<% @all.each do |one| %>
+
+      <p>Name: <%= one.name %></p>
+      <p>Age: <%= one.age %></p>
+      <p><%= link_to 'show', friend_path(one) %></p>
+    
+  <% end %>
