@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
         @comment=@friend.comment.create(params.require(:comment).permit(:commenter, :body))
         redirect_to friend_path(@friend)
     end
-    before_action :authenticate_user!
+    
     def destroy
         @friend=Friend.find(params[:friend_id])
         @comment=Comment.find(params[:id])

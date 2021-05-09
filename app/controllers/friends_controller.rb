@@ -3,12 +3,12 @@ class FriendsController < ApplicationController
     def index
         @all = Friend.all
     end
-    before_action :authenticate_user!
+
     def new
         @new ="form"
         @friend = Friend.new()
     end
-    before_action :authenticate_user!
+
     def create
         @friend = Friend.new(params.require(:friends).permit(:name,:age))
         if @friend.save
@@ -17,15 +17,15 @@ class FriendsController < ApplicationController
             render 'new'
         end
     end
-    before_action :authenticate_user!
+
     def show
         @friend = Friend.find(params[:id])
     end
-    before_action :authenticate_user!
+
     def edit
         @friend = Friend.find(params[:id])
     end
-    before_action :authenticate_user!
+
     def update
         @friend = Friend.find(params[:id])
         if @friend.update(params.require(:friend).permit(:name,:age))
@@ -35,7 +35,7 @@ class FriendsController < ApplicationController
         end
     end
 
-    before_action :authenticate_user!
+    
     def destroy
         @friend = Friend.find(params[:id])
         @friend.destroy
