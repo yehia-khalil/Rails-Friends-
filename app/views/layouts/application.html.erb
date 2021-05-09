@@ -10,8 +10,9 @@
   </head>
 
   <body>
-    <a href="/" >Home</a>
-    <a href="/friends" >Friends</a>
+    <%= link_to 'Home', welcome_index_path%>
+    <%= link_to 'Friends', friends_path%>
     <%= yield %>
+    <%= link_to'Logout', destroy_user_session_path, method: :delete%>
   </body>
 </html>

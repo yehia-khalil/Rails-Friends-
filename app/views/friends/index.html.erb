@@ -1,7 +1,12 @@
 <% @all.each do |one| %>
-
+    <p>--------------------------------------------------</p>
       <p>Name: <%= one.name %></p>
       <p>Age: <%= one.age %></p>
-      <p><%= link_to 'show', friend_path(one) %></p>
-    
+      <p><%= link_to 'Show', friend_path(one) %></p>
+      <p><%= link_to 'Edit', edit_friend_path(one) %></p>
+      <p><%= link_to 'Delete', friend_path(one),
+        method: :delete,
+      data: { confirm: 'Enta mot2aked yasta?'} %></p>
+    <p>--------------------------------------------------</p>
   <% end %>
+  <%= link_to 'New Friend', new_friend_path %>

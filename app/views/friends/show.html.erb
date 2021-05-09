@@ -1,2 +1,32 @@
-<p><%= @friend.name %></p>
-<p><%= @friend.age %></p>
+<p>Name : <%= @friend.name %></p>
+<p>Age : <%= @friend.age %></p>
+
+<h2>Reviews: </h2>
+
+<% @friend.comment.each do |comment|%>
+<p>
+    <strong><%= comment.commenter%></strong>: <%= comment.body %>
+</p>
+<p>
+    <%= link_to 'Delete Comment', [comment.friend, comment], 
+        method: "delete",
+        data: {confirm: 'Sure yasta?'}%>
+</p>
+<%end%>
+
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @friend, @friend.comment.build ], local: true) do |form| %>
+<p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+</p>
+<p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+</p>
+<p>
+    <%= form.submit %>
+</p>
+<% end %>
+<%= link_to 'Edit', edit_friend_path(@friend) %> |
+<%= link_to 'Back', friends_path%>

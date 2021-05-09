@@ -1,0 +1,29 @@
+<%= form_with model: @friend, local: true do |form| %>
+
+  <% if @friend.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@friend.errors.count, "error") %> prohibited
+        this friend from being saved:
+      </h2>
+      <ul>
+        <% @friend.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.label :age %><br>
+    <%= form.number_field :age %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
